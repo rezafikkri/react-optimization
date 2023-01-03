@@ -1,8 +1,15 @@
-import React from 'react';
+import { Component } from 'react';
 
-function Count(props) {
-  console.log("Count rendering");
-  return <p>{props.text} is {props.count}</p>
+export default class Count extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.count !== nextProps.count) {
+      return true;
+    }
+    return false;
+  }
+
+  render() {
+    console.log("Count rendering", this.props.count);
+    return <p>{this.props.text} is {this.props.count}</p>;
+  }
 }
-
-export default React.memo(Count);

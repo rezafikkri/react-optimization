@@ -1,27 +1,42 @@
-import { useCallback, useState } from 'react';
+import React, { Component } from 'react';
 import Button from './Button';
 import Title from './Title';
 import Count from './Count';
 
-export default function App() {
-  const [age, setAge] = useState(21);
-  const [salary, setSalary] = useState(25000);
+export default class App extends Component {
+  constructor(props) {
+    super(props);
 
-  const incrementAge = () => {
-    setAge(age + 1);
-  };
+    this.state = {
+      age: 21,
+      salary: 25000,
+    };
 
-  const incrementSalary = () => {
-    setSalary(salary + 1000);
-  };
+    this.incrementAge = this.incrementAge.bind(this);
+    this.incrementSalary = this.incrementSalary.bind(this);
+  }
 
-  return (
-    <div>
-      <Title/>
-      <Count text="age" count={age} />
-      <Button handleClick={incrementAge}>Increment my age</Button>
-      <Count text="salary" count={salary} />
-      <Button handleClick={incrementSalary}>Increment my salary</Button>
-    </div>
-  );
+  incrementAge() {
+    this.setState((state) => ({
+      age: state.age + 1,
+    }));
+  }
+
+  incrementSalary() {
+    this.setState((state) => ({
+      salary: state.salary + 1000,
+    }));
+  }
+
+  render() {
+    return (
+      <div>
+        <Title/>
+        <Count text="age" count={this.state.age} />
+        <Button handleClick={this.incrementAge}>Increment my age</Button>
+        <Count text="salary" count={this.state.salary} />
+        <Button handleClick={this.incrementSalary}>Increment my salary</Button>
+      </div>
+    );
+  } 
 }

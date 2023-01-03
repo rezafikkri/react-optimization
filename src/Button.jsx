@@ -1,8 +1,8 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
-function Button(props) {
-  console.log(`Button clicked ${props.children}`);
-  return <button onClick={props.handleClick}>{props.children}</button>;
+export default class Button extends PureComponent {
+  render() {
+    console.log(`Button clicked ${this.props.children}`);
+    return <button onClick={this.props.handleClick}>{this.props.children}</button>;
+  }
 }
-
-export default React.memo(Button);

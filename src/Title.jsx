@@ -1,8 +1,8 @@
-import React from 'react';
+import { PureComponent } from 'react';
 
-function Title() {
-  console.log ("Title Rendering");
-  return <h2>useCallBack hook</h2>;
+export default class Title extends PureComponent {
+  render() {
+    console.log ("Title Rendering");
+    return <h2>useCallBack hook</h2>;
+  }
 }
-
-export default React.memo(Title);
